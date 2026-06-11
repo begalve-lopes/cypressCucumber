@@ -50,3 +50,6 @@ jobs:
         with:
           start: npm start
           browser: chrome
+        env:
+          # pass GitHub token to detect new build vs re-run build
+          GITHUB_TOKEN: ${{secrets.CYPRESS_RECORD_KEY}}
