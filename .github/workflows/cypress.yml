@@ -18,8 +18,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
-          build: npm install
           start: npm start
           browser: chrome
         env:
-          GITHUB_TOKEN: ${{ secrets.CYPRESSWITHCUCUMBER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
