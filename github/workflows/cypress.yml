@@ -1,55 +1,25 @@
-name: Cypress + Cucumber 
+name: Cypress + Cucumber
 
-on: 
+on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main, master]
   pull_request:
-    branches:
-      - main
-      - master
+    branches: [main, master]
   workflow_dispatch:
 
 jobs:
-  install:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Cypress install
-        uses: cypress-io/github-action@v7
-        with:
-          # Disable running of tests within install job #
-          runTests: false
-          build: npm run build
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v6
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
-
   cypress-run:
     runs-on: ubuntu-24.04
-    needs: install
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Download the build folder
-        uses: actions/download-artifact@v7
-        with:
-          name: build
-          path: build
 
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
+          build: npm run build
           start: npm start
           browser: chrome
         env:
-          # pass GitHub token to detect new build vs re-run build
-          GITHUB_TOKEN: ${{secrets.CYPRESS_RECORD_KEY}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
