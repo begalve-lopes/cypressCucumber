@@ -18,8 +18,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
-          start: npm start
           browser: chrome
+          # Remove the 'start' line completely
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESSWITHCUCUMBER }}
