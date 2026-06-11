@@ -16,7 +16,7 @@ module.exports = defineConfig({
         "file:preprocessor",
         createBundler({
           plugins: [createEsbuildPlugin(config)],
-        })
+        }),
       );
 
       return config;
@@ -27,4 +27,7 @@ module.exports = defineConfig({
   env: {
     stepDefinitions: "cypress/e2e/step_definitions/**/*.{js,ts}",
   },
+
+  projectId: "p5des2",
+  video: true,
 });
