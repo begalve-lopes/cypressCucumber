@@ -22,3 +22,4 @@ jobs:
           browser: chrome
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESSWITHCUCUMBER }}
